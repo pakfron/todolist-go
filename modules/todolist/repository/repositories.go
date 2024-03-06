@@ -9,8 +9,9 @@ import (
 func GetTodolist() (*[]entities.TodolistRes, error) {
 	db := server.GetDB()
 	defer server.CloseDB(db)
+
 	outputRes := []entities.TodolistRes{}
-	result := db.Model(database.Todolist{}).Find(&outputRes)
+	result := db.Model(database.Todolist{}).Where("is_del = ?", false).Find(&outputRes)
 	if result.Error != nil {
 		return nil, result.Error
 	}

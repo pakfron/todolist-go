@@ -31,6 +31,6 @@ type IDEditDB struct {
 }
 
 type TodoDelReq struct {
-	ID    int  `json:"id" binding:"required"`
-	IsDel bool `json:"is_del" binding:"required"`
+	ID    int   `json:"id" binding:"required"`
+	IsDel *bool `json:"is_del" binding:"required"`
 }
